@@ -1,9 +1,8 @@
 package com.example.weatherfetcher
 import retrofit2.Response
-class WeatherRemoteSource {
+
+
     class WeatherRemoteSource(private  val api: WeatherApi) {
         // TODO add query
-        fun getWeather(): Response<String> {
-            return api.getWeather(query = "Moscow")
-        }
-    }}
+    fun getWeather(): Response<String> {
+        return api.getWeather(query = "Moscow")}}
