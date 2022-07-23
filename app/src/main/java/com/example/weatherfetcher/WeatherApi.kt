@@ -10,6 +10,7 @@ import retrofit2.http.Query
         @GET
         fun getWeather(
             @Query("q") query:String,
+            @Query("units") units: String = "metric",
             @Query("appid") apiKey: String = API_KEY,
         ): Response<String>
     }
