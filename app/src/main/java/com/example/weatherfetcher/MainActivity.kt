@@ -13,22 +13,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var presenter: WeatherScreenPresenter
+    private val presenter: WeatherScreenPresenter by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        presenter = WeatherScreenPresenter(
-            WeatherInteractor(
-                WeatherRepoImpl(
-                    WeatherRemoteSource(WeatherApiClient.getApi())
-                )
-            )
-        )
 
         var weather = ""
         val textViewHello = findViewById<TextView>(R.id.tvHello)
