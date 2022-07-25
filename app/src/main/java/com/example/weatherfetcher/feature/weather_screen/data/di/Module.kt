@@ -2,8 +2,9 @@ package com.example.weatherfetcher.feature.weather_screen.data.di
 
 import com.example.weatherfetcher.BASE_URL
 import com.example.weatherfetcher.feature.weather_screen.data.*
-import com.example.weatherfetcher.feature.weather_screen.data.ui.WeatherScreenPresenter
+import com.example.weatherfetcher.feature.weather_screen.data.ui.WeatherScreenViewModel
 import okhttp3.OkHttpClient
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -34,5 +35,5 @@ val WeatherScreenModule = module {
 
     single { WeatherInteractor(get<WeatherRepo>()) }
 
-    single { WeatherScreenPresenter(get<WeatherInteractor>()) }
+    viewModel() { WeatherScreenViewModel(get<WeatherInteractor>()) }
 }

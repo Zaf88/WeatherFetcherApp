@@ -2,22 +2,17 @@ package com.example.weatherfetcher
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.TextView
-import com.example.weatherfetcher.feature.weather_screen.data.WeatherApiClient
-import com.example.weatherfetcher.feature.weather_screen.data.WeatherInteractor
-import com.example.weatherfetcher.feature.weather_screen.data.WeatherRemoteSource
-import com.example.weatherfetcher.feature.weather_screen.data.WeatherRepoImpl
-import com.example.weatherfetcher.feature.weather_screen.data.ui.WeatherScreenPresenter
+import com.example.weatherfetcher.feature.weather_screen.data.ui.WeatherScreenViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val presenter: WeatherScreenPresenter by inject()
+    private val viewModel: WeatherScreenViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         GlobalScope.launch {
             withContext(Dispatchers.Main){
-        textViewHello.text =  presenter.getWeather()
+        textViewHello.text =  viewModel.getWeather()
     }}}}
 
 
