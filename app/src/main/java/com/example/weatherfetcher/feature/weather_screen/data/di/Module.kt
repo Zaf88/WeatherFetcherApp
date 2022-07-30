@@ -18,7 +18,12 @@ val WeatherScreenModule = module {
 //)
 //)
 //)
-    single<OkHttpClient> { OkHttpClient.Builder().build() }
+    single<OkHttpClient> {
+        OkHttpClient
+            .Builder()
+            .build()
+    }
+
     single<Retrofit> {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
