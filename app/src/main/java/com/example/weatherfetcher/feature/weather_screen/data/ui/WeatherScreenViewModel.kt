@@ -55,3 +55,7 @@ abstract class WeatherScreenViewModel(val interactor: WeatherInteractor) : BaseV
     }
 }
 
+
+
+
+

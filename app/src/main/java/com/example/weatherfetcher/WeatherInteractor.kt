@@ -10,11 +10,11 @@ class WeatherInteractor(get: WeatherRepo) {
 
     class WeatherInteractor(private val weatherRepo: WeatherRepo) {
 
-         suspend fun getWeather(): Either<Throwable, WeatherModel> {
+        suspend fun getWeather(): Either<Throwable, WeatherModel> {
             return attempt { weatherRepo.getTemperature() }
         }
 
-         suspend fun getWind(): Either<Throwable, WindModel> {
+        suspend fun getWind(): Either<Throwable, WindModel> {
             return attempt { weatherRepo.getWind() }
         }
     }

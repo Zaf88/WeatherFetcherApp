@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.viewState.observe(this, ::render)
 
         fabWatcher.setOnClickListener {
-            viewModel.processUiEvent(UiEvent.OnButtonClicked)
+            viewModel.processUiEvent(UiEvent.WindIsLoaded)
         }
 
 
