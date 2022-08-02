@@ -1,9 +1,10 @@
 package com.example.weatherfetcher
 
+import com.example.weatherfetcher.model.WeatherModel
+import com.example.weatherfetcher.model.WindModel
+
 interface WeatherRepo {
 
-    interface WeatherRepo {
-    }
-
-    fun getWindDirection(): String
+    suspend fun getTemperature(): WeatherModel
+    suspend fun getWind(): WindModel
 }

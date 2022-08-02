@@ -1,11 +1,21 @@
 package com.example.weatherfetcher
 
-class WeatherInteractor {
+import com.example.weatherfetcher.Base.Either
+import com.example.weatherfetcher.Base.attempt
+import com.example.weatherfetcher.model.WeatherModel
+import com.example.weatherfetcher.model.WindModel
+
+class WeatherInteractor(get: WeatherRepo) {
+
 
     class WeatherInteractor(private val weatherRepo: WeatherRepo) {
 
-        fun getWeather(): String {
-            return weatherRepo.getWindDirection()
+         suspend fun getWeather(): Either<Throwable, WeatherModel> {
+            return attempt { weatherRepo.getTemperature() }
+        }
+
+        suspend fun getWind(): Either<Throwable, WindModel> {
+            return attempt { weatherRepo.getWind() }
         }
     }
 }
