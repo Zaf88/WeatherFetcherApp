@@ -2,6 +2,8 @@ package com.example.newsfetcher.Base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.weatherfetcher.feature.weather_screen.data.ui.UiEvent
+import com.example.weatherfetcher.feature.weather_screen.data.ui.ViewState
 
 
 abstract class BaseViewModel<VIEW_STATE> : ViewModel() {
@@ -16,6 +18,7 @@ abstract class BaseViewModel<VIEW_STATE> : ViewModel() {
     }
 
     protected fun processDataEvent(event: Event) {
+
         updateState(event)
     }
 
@@ -25,4 +28,8 @@ abstract class BaseViewModel<VIEW_STATE> : ViewModel() {
             viewState.value = newViewState
         }
     }
+
+    abstract fun reduce(event: android.media.metrics.Event, previousState: ViewState): ViewState?
+    abstract fun initialViewState(): ViewState
+    abstract fun processUiEvent(windIsLoaded: UiEvent.WindIsLoaded)
 }

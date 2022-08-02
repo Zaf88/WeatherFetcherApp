@@ -41,5 +41,7 @@ val weatherScreenModule = module {
 
     single { WeatherInteractor(get<WeatherRepo>()) }
 
-    viewModel { WeatherScreenViewModel(get<WeatherInteractor>()) }
+    viewModel { WeatherScreenViewModel(get<WeatherInteractor>(),)}
 }
+
+

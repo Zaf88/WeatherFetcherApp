@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="fabWeatherFetch" type="id" />
+    <item name="btnWind" type="id" />
+    <item name="tvWindDirection" type="id" />
 </resources>

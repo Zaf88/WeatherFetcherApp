@@ -19,9 +19,9 @@ class WindActivity : AppCompatActivity() {
 
         viewModel.viewState.observe(this, ::render)
         viewModel.processUiEvent(UiEvent.WindIsLoaded)
-        fabWind.setOnClickListener {
-            viewModel.processUiEvent(UiEvent.onButtonGetWindClicked)
-        }
+//        fabWind.setOnClickListener {
+//            viewModel.processUiEvent(UiEvent.onButtonGetWindClicked)
+//        }
 
     }
 
