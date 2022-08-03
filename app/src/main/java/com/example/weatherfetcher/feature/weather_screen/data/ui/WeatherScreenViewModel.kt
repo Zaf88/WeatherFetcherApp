@@ -6,7 +6,7 @@ import com.example.weatherfetcher.base.Event
 import com.example.weatherfetcher.feature.weather_screen.data.WeatherInteractor
 import kotlinx.coroutines.launch
 
-class WeatherScreenViewModel(val interactor: WeatherInteractor) : BaseViewModel<ViewState>() {
+ class WeatherScreenViewModel(val interactor: WeatherInteractor) : BaseViewModel<ViewState>() {
 
     override fun InitialViewState(): ViewState =
         ViewState(isLoading = false, title = "hello", temperature = "")
@@ -32,4 +32,6 @@ class WeatherScreenViewModel(val interactor: WeatherInteractor) : BaseViewModel<
             }
            else -> return null
         }
-    }}
+    }
+
+}
