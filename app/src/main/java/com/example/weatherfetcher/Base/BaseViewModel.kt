@@ -13,7 +13,7 @@ abstract class BaseViewModel<VIEW_STATE> : ViewModel() {
     abstract fun InitialViewState(): VIEW_STATE
     abstract fun reduce(event: Event, previousState: VIEW_STATE): VIEW_STATE?
 
-    fun processUIEvent(event: Event) {
+    fun processUiEvent(event: Event) {
         updateState(event)
     }
 
@@ -29,7 +29,5 @@ abstract class BaseViewModel<VIEW_STATE> : ViewModel() {
         }
     }
 
-    abstract fun reduce(event: android.media.metrics.Event, previousState: ViewState): ViewState?
-    abstract fun initialViewState(): ViewState
-    abstract fun processUiEvent(windIsLoaded: UiEvent.WindIsLoaded)
+
 }

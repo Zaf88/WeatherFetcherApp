@@ -13,7 +13,10 @@ abstract class WeatherScreenViewModel(val interactor: WeatherInteractor) : BaseV
     override fun initialViewState(): ViewState =
         ViewState(isLoading = false, title = "Hello", temperature = "", windDeg = "")
 
-    override fun reduce(event: Event, previousState: ViewState): ViewState? {
+    override fun reduce(
+        event: com.example.newsfetcher.Base.Event,
+        previousState: ViewState
+    ): ViewState? {
         when (event) {
             is UiEvent.OnButtonClicked -> {
                 viewModelScope.launch {
