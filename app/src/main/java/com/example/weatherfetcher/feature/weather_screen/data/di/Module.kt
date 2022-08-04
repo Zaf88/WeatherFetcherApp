@@ -1,7 +1,11 @@
 package com.example.weatherfetcher.feature.weather_screen.data.di
 
 import com.example.weatherfetcher.BASE_URL
-import com.example.weatherfetcher.feature.weather_screen.data.*
+import com.example.weatherfetcher.feature.weather_screen.data.WeatherApi
+import com.example.weatherfetcher.feature.weather_screen.data.WeatherRemoteSource
+import com.example.weatherfetcher.feature.weather_screen.data.WeatherRepo
+import com.example.weatherfetcher.feature.weather_screen.data.WeatherRepoImpl
+import com.example.weatherfetcher.feature.weather_screen.data.ui.WeatherInteractor
 import com.example.weatherfetcher.feature.weather_screen.data.ui.WeatherScreenViewModel
 import okhttp3.OkHttpClient
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -40,5 +44,5 @@ val WeatherScreenModule = module {
 
     single { WeatherInteractor(get<WeatherRepo>()) }
 
-    viewModel() { WeatherScreenViewModel(get<WeatherInteractor>()) }
+    viewModel { WeatherScreenViewModel(get<WeatherInteractor>()) }
 }
