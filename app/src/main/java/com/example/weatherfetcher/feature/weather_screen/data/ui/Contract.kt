@@ -1,6 +1,6 @@
 package com.example.weatherfetcher.feature.weather_screen.data.ui
 
-import com.example.newsfetcher.Base.Event
+import com.example.weatherfetcher.Base.Event
 
 
 data class ViewState(

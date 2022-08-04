@@ -1,9 +1,7 @@
-package com.example.newsfetcher.Base
+package com.example.weatherfetcher.Base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.weatherfetcher.feature.weather_screen.data.ui.UiEvent
-import com.example.weatherfetcher.feature.weather_screen.data.ui.ViewState
 
 
 abstract class BaseViewModel<VIEW_STATE> : ViewModel() {

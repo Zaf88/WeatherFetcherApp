@@ -1,22 +1,17 @@
 package com.example.weatherfetcher.feature.weather_screen.data.ui
 
-import android.media.metrics.Event
 import androidx.lifecycle.viewModelScope
-import com.example.newsfetcher.Base.BaseViewModel
+import com.example.weatherfetcher.Base.BaseViewModel
 import com.example.weatherfetcher.WeatherInteractor
 import kotlinx.coroutines.launch
 import com.example.weatherfetcher.feature.weather_screen.data.ui.UiEvent as UiEvent
 
+class WeatherScreenViewModel(val interactor: WeatherInteractor) : BaseViewModel<ViewState>() {
 
-abstract class WeatherScreenViewModel(val interactor: WeatherInteractor) : BaseViewModel<ViewState>() {
+    override fun InitialViewState(): ViewState = ViewState (isLoading = false, title = "Hello", temperature = "", windDeg = "")
 
-    override fun initialViewState(): ViewState =
-        ViewState(isLoading = false, title = "Hello", temperature = "", windDeg = "")
-
-    override fun reduce(
-        event: com.example.newsfetcher.Base.Event,
-        previousState: ViewState
-    ): ViewState? {
+    override fun reduce(event: com.example.weatherfetcher.Base.Event,
+        previousState: ViewState): ViewState? {
         when (event) {
             is UiEvent.OnButtonClicked -> {
                 viewModelScope.launch {
@@ -55,8 +50,14 @@ abstract class WeatherScreenViewModel(val interactor: WeatherInteractor) : BaseV
             }
             else -> return null
         }
-    }
-}
+    }}
+
+
+
+
+
+
+
 
 
 

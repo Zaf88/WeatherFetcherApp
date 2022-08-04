@@ -39,9 +39,7 @@ class MainActivity : AppCompatActivity() {
             viewModel.processUiEvent(UiEvent.WindIsLoaded)
         }
 
-
     }
-
     private fun render(viewState: ViewState) {
         progressBar.isVisible = viewState.isLoading
         textViewHello.text = "${viewState.title} ${viewState.temperature}"

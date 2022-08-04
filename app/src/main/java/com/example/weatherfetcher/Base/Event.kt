@@ -1,4 +1,4 @@
-package com.example.newsfetcher.Base
+package com.example.weatherfetcher.Base
 
 interface Event {
 }
