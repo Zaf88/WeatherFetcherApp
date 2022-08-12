@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: WeatherScreenViewModel by viewModel()
 
     private val textViewHello: TextView by lazy { findViewById(R.id.tvHello) }
-    private val fabWatcher: FloatingActionButton by lazy { findViewById(R.id.fabWeatherFetch) }
+    private val fabWeather: FloatingActionButton by lazy { findViewById(R.id.fabWeatherFetch) }
     private val progressBar: ProgressBar by lazy { findViewById(R.id.progressBar) }
 
 
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         }
         viewModel.viewState.observe(this, ::render)
 
-        fabWatcher.setOnClickListener {
+        fabWeather.setOnClickListener {
             viewModel.processUiEvent(UiEvent.WindIsLoaded)
         }
 
