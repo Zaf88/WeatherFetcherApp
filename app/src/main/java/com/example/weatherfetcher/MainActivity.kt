@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel: WeatherScreenViewModel by viewModel()
 
-    private val textViewHello: TextView by lazy { findViewById(R.id.tvHello) }
+    private val textViewHello: TextView by lazy { findViewById(R.id.tvTextView) }
     private val fabWeather: FloatingActionButton by lazy { findViewById(R.id.fabWeatherFetch) }
     private val progressBar: ProgressBar by lazy { findViewById(R.id.progressBar) }
 
@@ -28,11 +28,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btnWind = findViewById<Button>(R.id.btnWind)
-        btnWind.setOnClickListener {
-            val intent = Intent(this, WindActivity::class.java)
-            startActivity(intent)
-        }
+
         viewModel.viewState.observe(this, ::render)
 
         fabWeather.setOnClickListener {
