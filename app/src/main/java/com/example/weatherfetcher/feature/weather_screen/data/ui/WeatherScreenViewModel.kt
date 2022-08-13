@@ -1,5 +1,6 @@
 package com.example.weatherfetcher.feature.weather_screen.data.ui
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.weatherfetcher.Base.BaseViewModel
 import com.example.weatherfetcher.WeatherInteractor
@@ -18,6 +19,7 @@ class WeatherScreenViewModel(val interactor: WeatherInteractor) : BaseViewModel<
                     interactor.getWeather().fold(
                         onError = {
                             processDataEvent(DataEvent.OnWeatherFetchFailed(error = it))
+                            it.localizedMessage?.let { it1-> Log.e("ERROR",it1) }
                         },
                         onSuccess = {
                             processDataEvent(DataEvent.OnWeatherFetchSucceed(temperature = "Температура: ${it.temperature}"))

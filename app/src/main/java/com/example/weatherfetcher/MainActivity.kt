@@ -14,28 +14,31 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-
 class MainActivity : AppCompatActivity() {
 
     private val viewModel: WeatherScreenViewModel by viewModel()
 
-    private val textViewHello: TextView by lazy { findViewById(R.id.tvTextView) }
+    private val textViewHello: TextView by lazy { findViewById(R.id.tvHello) }
     private val fabWeather: FloatingActionButton by lazy { findViewById(R.id.fabWeatherFetch) }
     private val progressBar: ProgressBar by lazy { findViewById(R.id.progressBar) }
-
+    private val btnWeather: Button by lazy { findViewById(R.id.btnWeather) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        viewModel.viewState.observe(this, ::render)
+        btnWeather.setOnClickListener {
+            val intent = Intent(this, WindActivity::class.java)
+            startActivity(intent)
+        }
+            viewModel.viewState.observe(this, ::render)
 
         fabWeather.setOnClickListener {
-            viewModel.processUiEvent(UiEvent.WindIsLoaded)
+            viewModel.processUiEvent(UiEvent.OnButtonClicked)
         }
 
     }
+
     private fun render(viewState: ViewState) {
         progressBar.isVisible = viewState.isLoading
         textViewHello.text = "${viewState.title} ${viewState.temperature}"

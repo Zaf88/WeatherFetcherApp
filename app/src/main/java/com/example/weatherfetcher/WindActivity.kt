@@ -11,7 +11,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WindActivity : AppCompatActivity() {
     private val viewModel: WeatherScreenViewModel by viewModel()
-    private val tvWindDirection: TextView by lazy { findViewById(R.id.tvWindDirection) }
+    private val tvWindDirection: TextView by lazy { findViewById(R.id.tvHello) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,10 +19,6 @@ class WindActivity : AppCompatActivity() {
 
         viewModel.viewState.observe(this, ::render)
         viewModel.processUiEvent(UiEvent.WindIsLoaded)
-//        fabWind.setOnClickListener {
-//            viewModel.processUiEvent(UiEvent.onButtonGetWindClicked)
-//        }
-
     }
 
     private fun render(viewState: ViewState) {
