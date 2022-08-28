@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private val fabWeather: FloatingActionButton by lazy { findViewById(R.id.fabWeatherFetch) }
     private val progressBar: ProgressBar by lazy { findViewById(R.id.progressBar) }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -26,11 +27,18 @@ class MainActivity : AppCompatActivity() {
         viewModel.viewState.observe(this, ::render)
 
         fabWeather.setOnClickListener {
-            viewModel.processUIEvent(UiEvent.OnButtonClicked)
+            viewModel.processUiEvent(UiEvent.OnButtonClicked)
         }
     }
+
     private fun render(viewState: ViewState) {
         progressBar.isVisible = viewState.isLoading
         textViewHello.text = "${viewState.title}${viewState.temperature}"
+
+        if (isError == true) {
+         else errorText
+
+        }
+
     }
 }

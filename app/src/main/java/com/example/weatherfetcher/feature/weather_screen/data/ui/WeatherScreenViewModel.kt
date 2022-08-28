@@ -1,10 +1,8 @@
 package com.example.weatherfetcher.feature.weather_screen.data.ui
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.weatherfetcher.Base.BaseViewModel
 import com.example.weatherfetcher.Base.Event
-import com.example.weatherfetcher.feature.weather_screen.data.ui.model.WeatherModel
 import kotlinx.coroutines.launch
 
 
@@ -12,16 +10,17 @@ class WeatherScreenViewModel(val interactor: WeatherInteractor) : BaseViewModel<
 
 
     override fun InitialViewState(): ViewState =
-        ViewState(isLoading = false, title = "hello", temperature = "")
+        ViewState(isLoading = false, title = "hello", temperature = "", isError = true, errorText ="Failed to load weather, please try again")
 
     override  fun reduce(event: Event, previousState: ViewState): ViewState? {
         when (event) {
             is UiEvent.OnButtonClicked -> {
+
                 viewModelScope.launch {
                     interactor.getWeather().fold(
                         onError = {
-                            processDataEvent(DataEvent.OnWeatherFetchFailed(error = it))
-                        },
+                            processDataEvent(DataEvent.OnWeatherFetchError(errorText = "Failed to load weather, please try again"))
+                            },
                         onSuccess = {
                             processDataEvent(DataEvent.OnWeatherFetchSucceed(temperature = it.temperature))
                         }
@@ -31,6 +30,9 @@ class WeatherScreenViewModel(val interactor: WeatherInteractor) : BaseViewModel<
             }
             is DataEvent.OnWeatherFetchSucceed -> {
                 return previousState.copy(isLoading = false,temperature = event.temperature)
+            }
+            is DataEvent.OnWeatherFetchError -> {
+                return previousState.copy(errorText = event.errorText, isError = true, isLoading = false)
             }
             else -> return null
         }

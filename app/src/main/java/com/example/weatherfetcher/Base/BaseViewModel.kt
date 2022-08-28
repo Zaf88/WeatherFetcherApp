@@ -2,6 +2,9 @@ package com.example.weatherfetcher.Base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.weatherfetcher.feature.weather_screen.data.ui.DataEvent
+import kotlinx.coroutines.launch
 
 
 abstract class BaseViewModel<VIEW_STATE> : ViewModel() {
@@ -11,7 +14,7 @@ abstract class BaseViewModel<VIEW_STATE> : ViewModel() {
     abstract fun InitialViewState(): VIEW_STATE
     abstract  fun reduce(event: Event, previousState: VIEW_STATE): VIEW_STATE?
 
-     fun processUIEvent(event: Event) {
+     fun processUiEvent(event: Event) {
         updateState(event)
     }
 
