@@ -19,7 +19,7 @@ class WeatherScreenViewModel(val interactor: WeatherInteractor) : BaseViewModel<
                 viewModelScope.launch {
                     interactor.getWeather().fold(
                         onError = {
-                            processDataEvent(DataEvent.OnWeatherFetchError(errorText = "Failed to load weather, please try again"))
+                            processDataEvent(DataEvent.OnWeatherFetchError(errorText = String()))
                             },
                         onSuccess = {
                             processDataEvent(DataEvent.OnWeatherFetchSucceed(temperature = it.temperature))

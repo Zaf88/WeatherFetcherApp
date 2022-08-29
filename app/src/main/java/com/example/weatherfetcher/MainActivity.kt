@@ -35,10 +35,12 @@ class MainActivity : AppCompatActivity() {
         progressBar.isVisible = viewState.isLoading
         textViewHello.text = "${viewState.title}${viewState.temperature}"
 
-        if (isError == true) {
-         else errorText
+        if (viewState.isError)  {
 
-        }
-
+            textViewHello.text = viewState.errorText
+        } else {
+         viewState.temperature
     }
-}
+    }}
+
+
