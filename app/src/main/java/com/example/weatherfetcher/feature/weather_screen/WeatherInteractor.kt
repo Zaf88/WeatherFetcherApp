@@ -1,9 +1,10 @@
-package com.example.weatherfetcher
+package com.example.weatherfetcher.feature.weather_screen
 
 import com.example.weatherfetcher.Base.Either
 import com.example.weatherfetcher.Base.attempt
-import com.example.weatherfetcher.model.WeatherModel
-import com.example.weatherfetcher.model.WindModel
+import com.example.weatherfetcher.feature.data.WeatherRepo
+import com.example.weatherfetcher.feature.ui.model.WeatherModel
+import com.example.weatherfetcher.feature.ui.model.WindModel
 
 
 

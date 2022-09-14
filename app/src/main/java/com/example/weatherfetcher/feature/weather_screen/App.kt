@@ -1,4 +1,4 @@
-package com.example.weatherfetcher
+package com.example.weatherfetcher.feature.weather_screen
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate

@@ -1,4 +1,4 @@
-package com.example.weatherfetcher
+package com.example.weatherfetcher.feature.weather_screen
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,9 +8,10 @@ import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.view.isVisible
+import com.example.weatherfetcher.R
 import com.example.weatherfetcher.feature.weather_screen.data.ui.UiEvent
 import com.example.weatherfetcher.feature.weather_screen.data.ui.ViewState
-import com.example.weatherfetcher.feature.weather_screen.data.ui.WeatherScreenViewModel
+import com.example.weatherfetcher.feature.ui.WeatherScreenViewModel
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -20,7 +21,7 @@ import kotlin.math.abs
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: WeatherScreenViewModel by viewModel()
+    private val viewModel: WeatherScreenViewModel by viewModel ()
 
     private val textViewHello: TextView by lazy { findViewById(R.id.tvHello) }
     private val fabWeather: FloatingActionButton by lazy { findViewById(R.id.fabWeatherFetch) }
@@ -54,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun render(viewState: ViewState) {
         progressBar.isVisible = viewState.isLoading
-        collapsingToolbar.title = "Температура 36,6"
-        textViewHello.text = "${viewState.title} ${viewState.temperature}"
+        collapsingToolbar.title = viewState.temperature
+        textViewHello.text = viewState.temperature
     }
 }

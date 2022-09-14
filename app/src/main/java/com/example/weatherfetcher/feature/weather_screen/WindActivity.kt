@@ -1,11 +1,12 @@
-package com.example.weatherfetcher
+package com.example.weatherfetcher.feature.weather_screen
 
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.weatherfetcher.R
 import com.example.weatherfetcher.feature.weather_screen.data.ui.UiEvent
 import com.example.weatherfetcher.feature.weather_screen.data.ui.ViewState
-import com.example.weatherfetcher.feature.weather_screen.data.ui.WeatherScreenViewModel
+import com.example.weatherfetcher.feature.ui.WeatherScreenViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

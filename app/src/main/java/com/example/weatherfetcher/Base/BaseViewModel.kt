@@ -16,7 +16,6 @@ abstract class BaseViewModel<VIEW_STATE> : ViewModel() {
     }
 
     protected fun processDataEvent(event: Event) {
-
         updateState(event)
     }
 

@@ -1,25 +1,28 @@
-package com.example.weatherfetcher.feature.weather_screen.data.ui
+package com.example.weatherfetcher.feature.ui
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.weatherfetcher.Base.BaseViewModel
-import com.example.weatherfetcher.WeatherInteractor
+import com.example.weatherfetcher.Base.Event
+import com.example.weatherfetcher.feature.weather_screen.WeatherInteractor
+import com.example.weatherfetcher.feature.weather_screen.data.ui.DataEvent
+import com.example.weatherfetcher.feature.weather_screen.data.ui.ViewState
 import kotlinx.coroutines.launch
 import com.example.weatherfetcher.feature.weather_screen.data.ui.UiEvent as UiEvent
 
 class WeatherScreenViewModel(val interactor: WeatherInteractor) : BaseViewModel<ViewState>() {
 
-    override fun InitialViewState(): ViewState = ViewState (isLoading = false, title = "Hello", temperature = "", windDeg = "")
+    override fun InitialViewState(): ViewState =
+        ViewState(isLoading = false, title = "Hello", temperature = "", windDeg = "")
 
-    override fun reduce(event: com.example.weatherfetcher.Base.Event,
-        previousState: ViewState): ViewState? {
+    override fun reduce(event: Event, previousState: ViewState): ViewState? {
         when (event) {
             is UiEvent.OnButtonClicked -> {
                 viewModelScope.launch {
                     interactor.getWeather().fold(
                         onError = {
                             processDataEvent(DataEvent.OnWeatherFetchFailed(error = it))
-                            it.localizedMessage?.let { it1-> Log.e("ERROR",it1) }
+                            it.localizedMessage?.let { it1 -> Log.e("ERROR", it1) }
                         },
                         onSuccess = {
                             processDataEvent(DataEvent.OnWeatherFetchSucceed(temperature = "Температура: ${it.temperature}"))
@@ -28,7 +31,7 @@ class WeatherScreenViewModel(val interactor: WeatherInteractor) : BaseViewModel<
                     )
                 }
 
-                return previousState.copy(isLoading = true)
+                return previousState.copy(isLoading = true )
             }
 
             is UiEvent.WindIsLoaded -> {
@@ -52,7 +55,8 @@ class WeatherScreenViewModel(val interactor: WeatherInteractor) : BaseViewModel<
             }
             else -> return null
         }
-    }}
+    }
+}
 
 
 
